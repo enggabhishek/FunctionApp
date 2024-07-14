@@ -79,6 +79,7 @@ jobs:
           app-name: 'LogsTriggerApp'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          PYTHON_ISOLATE_WORKER_DEPENDENCIES: true
           scm-do-build-during-deployment: true
           enable-oryx-build: true
           
