@@ -4,3 +4,4 @@
 
 azure-functions
 pandas
+git+https://github.com/Azure-Samples/python-worker-extension-timer@main
