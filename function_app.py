@@ -1,6 +1,5 @@
 import azure.functions as func
 import logging
-# import pandas
 
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
@@ -25,3 +24,11 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
              status_code=200
         )
+
+
+@app.blob_trigger(arg_name="myblob", path="airflow/demo/",
+                               connection="AzureWebJobsStorage") 
+def BlobTrigger(myblob: func.InputStream):
+    logging.info(f"Python blob trigger function processed blob"
+                f"Name: {myblob.name}"
+                f"Blob Size: {myblob.length} bytes")
